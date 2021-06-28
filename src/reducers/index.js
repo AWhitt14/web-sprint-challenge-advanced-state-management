@@ -1,8 +1,34 @@
 
 export const initialState = {
+    smurfs: [],
+    loading: false,
+    errorMessage: ''
 }
 
-const reducer = ()=>{
+export const getSmirfs = 'GET_SMIRF'
+
+const reducer = (state = initialState, action) => {
+    switch (action.type){
+        case 'FETCHING_SMURF':
+           return {...state, loading: true};
+        case 'FETCHING_SUCCESS':
+            return {...state, loading: false, smurfs: action.payload}
+        case 'FETCHING_FAIL':
+            return {...state,loading: false,  errorMessage: 'failed to get smurfs'}
+        case 'SET_ERROR':
+            console.log('set s3')
+            return {...state, errorMessage: action.payload}
+        case 'ADD_SMURF':
+            return {...state, loading: true}
+        case 'POST_SUCCESS':
+            return {...state, loading: false, smurfs: action.payload}
+        case 'POST_FAIL':
+            return {...state, loading: false, errorMessage: 'failed to add smurfs'}
+
+        default:
+            return state;
+       
+    }
 }
 
 export default reducer;
