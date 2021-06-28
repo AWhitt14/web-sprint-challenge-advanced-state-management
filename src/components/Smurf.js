@@ -12,6 +12,6 @@ const Smurf = (props)=> {
             <p className="card-text"><b>Description:</b> {smurf.description}</p>
         </div>
     </div>);
-}
+} 
 
 export default Smurf;
